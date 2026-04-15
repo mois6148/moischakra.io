@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mois C | Marketing Leader</title>
+  <meta name="description" content="Mois C — Marketing leader building growth systems, premium brand presence, and commercial momentum." />
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --panel: #121212;
+      --text: #f5f5f5;
+      --muted: rgba(255,255,255,0.68);
+      --line: rgba(255,255,255,0.10);
+      --max: 1180px;
+      --radius-xl: 32px;
+      --radius-lg: 22px;
+      --shadow: 0 20px 50px rgba(0,0,0,0.28);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(calc(100% - 40px), var(--max));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(10,10,10,0.72);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+      gap: 20px;
+    }
+
+    .brand {
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      font-size: 12px;
+      color: rgba(255,255,255,0.75);
+      font-weight: 600;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      color: rgba(255,255,255,0.76);
+      font-size: 14px;
+    }
+
+    .hero {
+      border-bottom: 1px solid var(--line);
+      background:
+        radial-gradient(circle at top right, rgba(255,255,255,0.10), transparent 25%),
+        linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 55%, #000000 100%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 48px;
+      padding: 88px 0 80px;
+      align-items: end;
+    }
+
+    .eyebrow {
+      margin: 0 0 18px;
+      font-size: 12px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.56);
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      max-width: 900px;
+    }
+
+    .hero-text {
+      margin-top: 24px;
+      max-width: 760px;
+      font-size: 18px;
+      color: var(--muted);
+    }
+
+    .actions {
+      margin-top: 34px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 22px;
+      border-radius: 18px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn-primary {
+      background: #fff;
+      color: #000;
+      box-shadow: 0 14px 34px rgba(255,255,255,0.10);
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(255,255,255,0.18);
+      color: rgba(255,255,255,0.92);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .stack {
+      display: grid;
+      gap: 16px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.05);
+      border-radius: var(--radius-xl);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .label {
+      font-size: 12px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin: 0;
+    }
+
+    .card-title {
+      margin: 14px 0 0;
+      font-size: 30px;
+      line-height: 1.2;
+    }
+
+    .card-copy {
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    section.content-section {
+      padding: 84px 0;
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 54px;
+    }
+
+    .section-label {
+      font-size: 12px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.44);
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .copy {
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .copy + .copy { margin-top: 20px; }
+
+    .band {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .cards-3 {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .work-card {
+      background: #111111;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .visual {
+      height: 180px;
+      border-radius: 22px;
+      margin-bottom: 24px;
+      border: 1px solid var(--line);
+      background: linear-gradient(135deg, #555, #151515 62%);
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.3);
+    }
+
+    .work-title {
+      margin: 16px 0 0;
+      font-size: 30px;
+      line-height: 1.2;
+    }
+
+    .work-copy {
+      margin-top: 16px;
+      font-size: 15px;
+      color: var(--muted);
+    }
+
+    .points {
+      margin: 20px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 14px;
+      color: rgba(255,255,255,0.80);
+      font-size: 14px;
+    }
+
+    .points li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .bullet {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      margin-top: 9px;
+      background: rgba(255,255,255,0.75);
+      flex: 0 0 auto;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 18px;
+    }
+
+    .timeline-card {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.05);
+      border-radius: var(--radius-xl);
+      padding: 26px;
+    }
+
+    .timeline-card h3 {
+      margin: 12px 0 0;
+      font-size: 28px;
+    }
+
+    .timeline-card p {
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .chips {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .chip {
+      padding: 12px 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05);
+      font-size: 14px;
+      color: rgba(255,255,255,0.86);
+    }
+
+    .philosophy-box {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      padding: 34px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+    }
+
+    .side-box {
+      border-radius: 26px;
+      border: 1px solid var(--line);
+      background: rgba(0,0,0,0.24);
+      padding: 24px;
+    }
+
+    .contact {
+      padding-top: 20px;
+      padding-bottom: 90px;
+    }
+
+    .contact-row {
+      border-top: 1px solid var(--line);
+      padding-top: 42px;
+      display: flex;
+      justify-content: space-between;
+      gap: 28px;
+      align-items: end;
+    }
+
+    .contact-info {
+      color: var(--muted);
+      font-size: 15px;
+      text-align: right;
+    }
+
+    .contact-info p { margin: 0 0 6px; }
+
+    footer {
+      border-top: 1px solid var(--line);
+      color: rgba(255,255,255,0.42);
+      font-size: 13px;
+      padding: 18px 0 36px;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .section-grid,
+      .philosophy-box,
+      .cards-3,
+      .contact-row {
+        grid-template-columns: 1fr;
+        display: grid;
+      }
+
+      .contact-info { text-align: left; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(calc(100% - 28px), var(--max)); }
+      .nav-inner { padding: 14px 0; }
+      .nav-links { gap: 12px; font-size: 13px; }
+      .hero-grid { padding: 70px 0 64px; }
+      section.content-section { padding: 68px 0; }
+      .card, .work-card, .timeline-card, .side-box, .philosophy-box { padding: 22px; }
+      .work-title, .timeline-card h3, .card-title { font-size: 24px; }
+      .hero-text, .copy { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">Mois C</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#experience">Experience</a>
+        <a href="#capabilities">Capabilities</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow">Mois C</p>
+        <h1>Marketing leader building growth systems, premium brand presence, and commercial momentum.</h1>
+        <p class="hero-text">
+          Group Marketing Manager with a background spanning automotive, lifestyle, events, wellness, and consumer-facing brands — translating strategy into campaigns, partnerships, experiences, and measurable business impact.
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#work">View Work</a>
+          <a class="btn btn-secondary" href="#contact">Let’s Connect</a>
+        </div>
+      </div>
+
+      <div class="stack">
+        <div class="card">
+          <p class="label">Positioning</p>
+          <h3 class="card-title">Strategic. Human. Commercial.</h3>
+          <p class="card-copy">
+            Built for premium personal branding — suitable for senior manager, head of marketing, or CMO-track positioning.
+          </p>
+        </div>
+        <div class="card">
+          <p class="label">Focus</p>
+          <p class="card-copy">
+            Senior-level brand strategy, campaign execution, digital performance, partnerships, launch activations, customer retention, and commercially driven marketing leadership.
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="about" class="content-section">
+    <div class="container section-grid">
+      <div>
+        <p class="section-label">About</p>
+        <h2>A marketer who connects brand, sales, experience, and growth.</h2>
+      </div>
+      <div>
+        <p class="copy">
+          My career has grown across events, advertising, automotive, wellness, and premium consumer-facing environments — giving me a practical view of how brands earn attention, trust, and commercial response in the real world.
+        </p>
+        <p class="copy">
+          Today, I work at the intersection of strategy and execution: shaping positioning, planning campaigns, building partnerships, driving activations, supporting lead generation, and aligning marketing with business outcomes. I do not see marketing as isolated promotions — I build systems that move perception, traffic, engagement, and revenue together.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="work" class="content-section band">
+    <div class="container">
+      <div class="section-grid" style="grid-template-columns: 1fr auto; gap: 20px; align-items: end;">
+        <div>
+          <p class="section-label">Selected Work</p>
+          <h2>Case studies that show range and leadership.</h2>
+        </div>
+        <div class="copy" style="max-width: 480px; font-size: 14px;">
+          This section should present your strongest commercial stories first — not every task you handled, but the work that shows leadership, scale, and measurable contribution.
+        </div>
+      </div>
+
+      <div class="cards-3">
+        <article class="work-card">
+          <div class="visual"></div>
+          <div class="meta">
+            <span>Group Marketing Manager</span>
+            <span class="dot"></span>
+            <span>Current Role</span>
+          </div>
+          <h3 class="work-title">Western Circle Group</h3>
+          <p class="work-copy">
+            Leading group-level marketing across automotive, aftersales, premium pre-owned, and hospitality touchpoints while shaping brand, activations, digital strategy, and commercial momentum.
+          </p>
+          <ul class="points">
+            <li><span class="bullet"></span><span>Overseeing brand and campaign strategy across multiple business arms</span></li>
+            <li><span class="bullet"></span><span>Connecting digital, showroom, aftersales, partnerships, and events into one growth system</span></li>
+            <li><span class="bullet"></span><span>Positioning premium brands with stronger local relevance in Northern Malaysia</span></li>
+          </ul>
+        </article>
+
+        <article class="work-card">
+          <div class="visual"></div>
+          <div class="meta">
+            <span>Performance + Brand Building</span>
+            <span class="dot"></span>
+            <span>Selected Impact</span>
+          </div>
+          <h3 class="work-title">Automotive Growth & Turnaround</h3>
+          <p class="work-copy">
+            Improved visibility, showroom traffic, workshop revenue, and sales momentum by combining content, lead generation, activation planning, and stronger marketing structure.
+          </p>
+          <ul class="points">
+            <li><span class="bullet"></span><span>Lifted premium recon sales through targeted content and roadshow strategy</span></li>
+            <li><span class="bullet"></span><span>Increased showroom walk-ins with sharper digital direction and awareness-building</span></li>
+            <li><span class="bullet"></span><span>Helped grow aftersales revenue through campaign mechanics and premium-owner targeting</span></li>
+          </ul>
+        </article>
+
+        <article class="work-card">
+          <div class="visual"></div>
+          <div class="meta">
+            <span>Experience-Led Marketing</span>
+            <span class="dot"></span>
+            <span>Across Roles</span>
+          </div>
+          <h3 class="work-title">Campaigns, Launches & Collaborations</h3>
+          <p class="work-copy">
+            Built launches, brand collaborations, customer events, and premium experiences designed to strengthen perception and create qualified engagement.
+          </p>
+          <ul class="points">
+            <li><span class="bullet"></span><span>Product and campaign launches</span></li>
+            <li><span class="bullet"></span><span>Roadshows, secret sales, customer activations, and community touchpoints</span></li>
+            <li><span class="bullet"></span><span>Partnerships, outlet collaborations, and brand-led experiential ideas</span></li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" class="content-section">
+    <div class="container section-grid">
+      <div>
+        <p class="section-label">Career Snapshot</p>
+        <h2>How your experience should be positioned.</h2>
+      </div>
+      <div class="timeline">
+        <div class="timeline-card">
+          <p class="label">Current</p>
+          <h3>Group Marketing Manager · Western Circle Group</h3>
+          <p>
+            Leading multi-brand marketing across premium automotive retail, aftersales, premium pre-owned, and hospitality-related touchpoints — with responsibility across campaigns, branding, digital, activations, partnerships, and commercial support.
+          </p>
+        </div>
+        <div class="timeline-card">
+          <p class="label">Before</p>
+          <h3>Previous Marketing Roles Across Events, Lifestyle, Wellness & Automotive</h3>
+          <p>
+            Frame this as a progression of scope — from hands-on campaign execution and events into broader strategic leadership, digital direction, cross-functional coordination, and revenue-aware marketing management.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="capabilities" class="content-section band">
+    <div class="container section-grid">
+      <div>
+        <p class="section-label">Capabilities</p>
+        <h2>What you should be hired for.</h2>
+      </div>
+      <div class="chips">
+        <span class="chip">Brand Strategy</span>
+        <span class="chip">Marketing Leadership</span>
+        <span class="chip">Integrated Campaign Planning</span>
+        <span class="chip">Digital Performance</span>
+        <span class="chip">Experiential Activations</span>
+        <span class="chip">Partnership Marketing</span>
+        <span class="chip">Lead Generation</span>
+        <span class="chip">Aftersales & Retention</span>
+        <span class="chip">Content Direction</span>
+        <span class="chip">Commercial Thinking</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="container">
+      <div class="philosophy-box">
+        <div>
+          <p class="section-label">Personal Philosophy</p>
+          <h2>Marketing should feel clear, elevated, and deeply human.</h2>
+          <p class="copy" style="margin-top: 18px; max-width: 760px;">
+            The best work sits at the intersection of insight, emotion, and execution. That is where brand memory is built — and where growth becomes sustainable.
+          </p>
+        </div>
+        <div class="side-box">
+          <p class="label">Best used for</p>
+          <div style="margin-top: 16px; display: grid; gap: 12px; color: rgba(255,255,255,0.78); font-size: 14px;">
+            <p>Senior marketing portfolio</p>
+            <p>Freelance / consulting positioning</p>
+            <p>Personal brand website</p>
+            <p>Job search at head or director level</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact container">
+    <div class="contact-row">
+      <div>
+        <p class="section-label">Contact</p>
+        <h2>Let’s build brands that leave a mark.</h2>
+      </div>
+      <div class="contact-info">
+        <p>mois1328@gmail.com</p>
+        <p>+60 18-377 8128</p>
+        <p>Penang, Malaysia</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">© 2026 Mois C. All rights reserved.</div>
+  </footer>
+</body>
+</html>
